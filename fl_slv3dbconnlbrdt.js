@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3')
 const http = require('http');  // 'http' module
 
 const hostname = '127.0.0.1';  // ip for localhost
-const port = '3010';
+const port = process.env.PORT || 3030;
 
 class AppDAO {
   constructor(dbFilePath) {
@@ -81,6 +81,6 @@ const server = http.createServer((req,res) => {
 
    }
  })
-server.listen(port,hostname, () => {
-  console.log(`HTTP Server listening at http://${hostname}:${port}/`);
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
