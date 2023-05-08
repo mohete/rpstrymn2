@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3')
 const http = require('http');  // 'http' module
 
 const hostname = '127.0.0.1';  // ip for localhost
-const port = process.env.PORT || 3030;
+const port = '3010';
 
 class AppDAO {
   constructor(dbFilePath) {
@@ -59,7 +59,22 @@ var lbrstr_ds='';
 const server = http.createServer((req,res) => {
    res.statusCode = 200; 
    res.setHeader('Content-Type','text/plain');  
-   res.setHeader('Access-Control-Allow-Origin','*');
+  // res.setHeader('Access-Control-Allow-Origin','*');
+   
+   // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    /* Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true); */
+
+
 
   const dao = new AppDAO('./db_dbnodecnnct')
   const nodeConn_Repo = new Node_connRepository(dao)
@@ -81,6 +96,6 @@ const server = http.createServer((req,res) => {
 
    }
  })
-app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
+server.listen(port,hostname, () => {
+  console.log(`HTTP Server listening at http://${hostname}:${port}/`);
 });
