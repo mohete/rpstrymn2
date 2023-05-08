@@ -59,10 +59,10 @@ var lbrstr_ds='';
 const server = http.createServer((req,res) => {
    res.statusCode = 200; 
    res.setHeader('Content-Type','text/plain');  
-  // res.setHeader('Access-Control-Allow-Origin','*');
+   res.setHeader('Access-Control-Allow-Origin','*');
    
    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000');
+   // res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
