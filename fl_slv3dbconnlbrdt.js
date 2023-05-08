@@ -85,6 +85,7 @@ const server = http.createServer((req,res) => {
      nodeConn_Repo.getAll()
 .then((rowslbrstr)=>{
      lbrstr_ds = '';
+       console.log('len'+rowslbrstr.length)
      for (var inc=0;inc<rowslbrstr.length;inc++){                  
       lbrstr_ds = lbrstr_ds + '{"name":"' + rowslbrstr[inc].person_name +'","designation":"' + rowslbrstr[inc].title +'"},';     
      }
