@@ -5,7 +5,7 @@ const sqlite3 = require('sqlite3')
 const http = require('http');  // 'http' module
 
 const hostname = '127.0.0.1';  // ip for localhost
-const port = '3010';
+const PORT = process.env.PORT || 3030;
 
 class AppDAO {
   constructor(dbFilePath) {
