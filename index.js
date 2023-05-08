@@ -5,8 +5,10 @@ const port = process.env.PORT || 3030;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;  // set the repsonse status code to 200 "OK"
-  res.setHeader('Content-Type', 'text/plain');  // set the response MIME type  
-  res.end('<p>hello, world</p>');  // write and end the response
+  res.setHeader('Content-Type', 'text/plain');  // set the response MIME type 
+  res.setHeader('Access-Control-Allow-Origin','*');
+
+  res.end();  // write and end the response
 });
 
 server.listen(port, () => {
