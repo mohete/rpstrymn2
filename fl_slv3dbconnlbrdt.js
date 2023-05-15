@@ -76,7 +76,7 @@ const server = http.createServer((req,res) => {
 
 
 
-  const dao = new AppDAO('./db_dbnodecnnct')
+  const dao = new AppDAO('https://repomain-static.onrender.com/db_dbnodecnnct')
   const nodeConn_Repo = new Node_connRepository(dao)
 
   
