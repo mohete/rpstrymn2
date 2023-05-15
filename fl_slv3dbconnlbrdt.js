@@ -55,14 +55,14 @@ getAll() {
     return this.dao.all(`SELECT * FROM db_tblbrstr`)
   }
 }
-var lbrstr_ds='';
+var lbrstr_ds='';var vcnctrtrws='';
 const server = http.createServer((req,res) => {
    res.statusCode = 200; 
    res.setHeader('Content-Type','text/plain');  
    res.setHeader('Access-Control-Allow-Origin','*');
    
    // Website you wish to allow to connect
-   // res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000');
+   /* res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000'); */
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -82,24 +82,24 @@ const server = http.createServer((req,res) => {
   
   var reqprsr = url.parse(req.url,true); 
   if (reqprsr.query.flag == "cnncttrtrv"){     
+     console.log("reading query flag - validated")
      nodeConn_Repo.getAll()
 .then((rowslbrstr)=>{
-     lbrstr_ds = '';
-       console.log('len'+rowslbrstr.length)
+     lbrstr_ds = '';vcnctrtrws='';
+     console.log('len of rows'+rowslbrstr.length);
+     vcnctrtrws = vcnctrtrws + '"retrows":"' + rowslbrstr.length + '",';
      for (var inc=0;inc<rowslbrstr.length;inc++){                  
       lbrstr_ds = lbrstr_ds + '{"name":"' + rowslbrstr[inc].person_name +'","designation":"' + rowslbrstr[inc].title +'"},';     
      }
     lbrstr_ds = lbrstr_ds.substr(0,lbrstr_ds.length - 1);
-    
-    res.write('"company_desg":[' + lbrstr_ds +']')
+    console.log("lbrstr_ds->"+lbrstr_ds);
+    res.write(vcnctrtrws + '"company_desg":[' + lbrstr_ds +']')
      res.end();  
     })
 
    }
  })
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
-/* server.listen(port,hostname, () => {
-  console.log(`HTTP Server listening at http://${hostname}:${port}/`);
-}); */
