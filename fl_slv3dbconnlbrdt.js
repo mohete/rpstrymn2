@@ -62,7 +62,7 @@ const server = http.createServer((req,res) => {
    res.setHeader('Access-Control-Allow-Origin','*');
    
    // Website you wish to allow to connect
-   /* res.setHeader('Access-Control-Allow-Origin', 'https://repomain-static.onrender.com:10000'); */
+   /* res.setHeader('Access-Control-Allow-Origin', 'https:// rpstrymn1-nodejs.onrender.com:10000'); */
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -76,7 +76,7 @@ const server = http.createServer((req,res) => {
 
 
 
-  const dao = new AppDAO('https://repomain-static.onrender.com/db_dbnodecnnct')
+  const dao = new AppDAO('https:// rpstrymn1-nodejs.onrender.com/db_dbnodecnnct')
   const nodeConn_Repo = new Node_connRepository(dao)
 
   
