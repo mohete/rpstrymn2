@@ -8,7 +8,7 @@ const hostname = '127.0.0.1';  // ip for localhost
 const PORT = process.env.PORT || 3030;
 
 var dbcon = mysql.createConnection({
-     host: "sql.freedb.tech:3306",
+     host: "sql.freedb.tech",
      user: "freedb_rootknct",
      password: "hc*tbFRH7cH583w",
      database: "freedb_mysqlwfdb"
@@ -37,11 +37,11 @@ const server = http.createServer((req,res) => {
      console.log("reading query flag - validated")
      dbcon.connect(function (err) {
      if(err) throw err;
-     dbcon.query("select * from emptbl_tst1",function (err,result,fields) {
+     dbcon.query("select * from emptable_tst1",function (err,result,fields) {
        if (err) throw err;
        console.log("result set length->"+ result.length);
           for(ic=0;ic<result.length;ic++)
-            lbrstr_ds = lbrstr_ds + JSON.stringify(result[i])+ ',';
+            lbrstr_ds = lbrstr_ds + JSON.stringify(result[ic])+ ',';
      lbrstr_ds = lbrstr_ds.substr(0,lbrstr_ds.length - 1);
      res.write(vcnctrtrws + '"employee_info":[' + lbrstr_ds +']')
      res.end();  
